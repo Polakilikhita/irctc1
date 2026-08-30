@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RailConnect - Railway Booking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo-area">
+
+        <div class="logo-circle">🚆</div>
+
+        <div>
+            <h2>RailConnect</h2>
+            <span>Indian Railways</span>
+        </div>
+
+    </div>
+
+    <nav>
+        <a href="#" onclick="showHome()">Home</a>
+        <a href="#" onclick="showSearch()">Trains</a>
+        <a href="#" onclick="showPNR()">PNR Status</a>
+        <a href="#" onclick="showBookings()">My Bookings</a>
+    </nav>
+
+    <button class="login-btn" onclick="showLogin()">
+        Login
+    </button>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+<!-- ================= HOME ================= -->
+
+<section id="homeSection">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">WELCOME TO</p>
+
+            <h1>
+                Indian Railways
+            </h1>
+
+            <p class="hero-text">
+                Book your journey with comfort,
+                convenience and confidence.
+            </p>
+
+        </div>
+
+
+        <!-- BOOKING CARD -->
+
+        <div class="booking-card">
+
+            <div class="booking-tabs">
+
+                <button class="active-tab">
+                    🚆 Book Ticket
+                </button>
+
+                <button onclick="showPNR()">
+                    🔎 PNR Status
+                </button>
+
+            </div>
+
+
+            <div class="route-row">
+
+                <!-- FROM -->
+
+                <div class="input-box">
+
+                    <label>FROM</label>
+
+                    <select id="fromStation">
+
+                        <option value="">Select Station</option>
+
+                        <option>Delhi</option>
+                        <option>Mumbai</option>
+                        <option>Bangalore</option>
+                        <option>Chennai</option>
+                        <option>Kolkata</option>
+                        <option>Hyderabad</option>
+                        <option>Dehradun</option>
+                        <option>Bhubaneswar</option>
+                        <option>Pune</option>
+
+                    </select>
+
+                    <span class="station-hint">
+                        Departure Station
+                    </span>
+
+                </div>
+
+
+                <!-- SWAP -->
+
+                <button class="swap-btn"
+                        onclick="swapStations()">
+
+                    ⇄
+
+                </button>
+
+
+                <!-- TO -->
+
+                <div class="input-box">
+
+                    <label>TO</label>
+
+                    <select id="toStation">
+
+                        <option value="">Select Station</option>
+
+                        <option>Delhi</option>
+                        <option>Mumbai</option>
+                        <option>Bangalore</option>
+                        <option>Chennai</option>
+                        <option>Kolkata</option>
+                        <option>Hyderabad</option>
+                        <option>Dehradun</option>
+                        <option>Bhubaneswar</option>
+                        <option>Pune</option>
+
+                    </select>
+
+                    <span class="station-hint">
+                        Arrival Station
+                    </span>
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="input-box">
+
+                    <label>DEPARTURE</label>
+
+                    <input
+                        type="date"
+                        id="journeyDate"
+                    >
+
+                    <span class="station-hint">
+                        Journey Date
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="options-row">
+
+                <div class="input-box small-input">
+
+                    <label>CLASS</label>
+
+                    <select id="travelClass">
+
+                        <option>All Classes</option>
+                        <option>Sleeper (SL)</option>
+                        <option>AC 3 Tier (3A)</option>
+                        <option>AC 2 Tier (2A)</option>
+                        <option>AC First Class (1A)</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-box small-input">
+
+                    <label>QUOTA</label>
+
+                    <select id="quota">
+
+                        <option>General</option>
+                        <option>Ladies</option>
+                        <option>Tatkal</option>
+                        <option>Senior Citizen</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="checkbox-row">
+
+                <label>
+                    <input type="checkbox">
+                    Flexible Date
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Available Berth
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Disability Concession
+                </label>
+
+            </div>
+
+
+            <button
+                class="search-btn"
+                onclick="searchTrains()">
+
+                SEARCH TRAINS
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUICK SERVICES -->
+
+    <section class="services">
+
+        <h2>Quick Services</h2>
+
+        <p class="section-description">
+            Everything you need for your railway journey
+        </p>
+
+
+        <div class="service-grid">
+
+            <div class="service-card"
+                 onclick="showPNR()">
+
+                <div class="service-icon">🔎</div>
+
+                <h3>PNR Status</h3>
+
+                <p>
+                    Check your ticket status
+                </p>
+
+            </div>
+
+
+            <div class="service-card"
+                 onclick="showSearch()">
+
+                <div class="service-icon">🚆</div>
+
+                <h3>Train Search</h3>
+
+                <p>
+                    Find trains and schedules
+                </p>
+
+            </div>
+
+
+            <div class="service-card"
+                 onclick="showBookings()">
+
+                <div class="service-icon">🎫</div>
+
+                <h3>My Bookings</h3>
+
+                <p>
+                    View your tickets
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">💬</div>
+
+                <h3>Help & Support</h3>
+
+                <p>
+                    Get assistance
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- ================= SEARCH RESULTS ================= -->
+
+<section id="searchSection" class="page-section hidden">
+
+    <div class="page-header">
+
+        <button onclick="showHome()">
+            ← Back
+        </button>
+
+        <div>
+
+            <h1>Available Trains</h1>
+
+            <p id="journeySummary">
+                Select your journey
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="train-layout">
+
+        <aside class="filters">
+
+            <h3>Filter Trains</h3>
+
+            <label>
+                <input type="checkbox">
+                AC Trains
+            </label>
+
+            <label>
+                <input type="checkbox">
+                Sleeper
+            </label>
+
+            <label>
+                <input type="checkbox">
+                Available Only
+            </label>
+
+            <hr>
+
+            <h4>Departure Time</h4>
+
+            <label>
+                <input type="checkbox">
+                Morning
+            </label>
+
+            <label>
+                <input type="checkbox">
+                Afternoon
+            </label>
+
+            <label>
+                <input type="checkbox">
+                Evening
+            </label>
+
+        </aside>
+
+
+        <div class="train-results">
+
+            <div class="result-heading">
+
+                <span>3 Trains Found</span>
+
+                <select>
+                    <option>Sort by Departure</option>
+                    <option>Sort by Duration</option>
+                    <option>Sort by Fare</option>
+                </select>
+
+            </div>
+
+
+            <!-- TRAIN 1 -->
+
+            <div class="train-card">
+
+                <div class="train-top">
+
+                    <div>
+
+                        <span class="train-number">
+                            12055
+                        </span>
+
+                        <h2>
+                            Dehradun Express
+                        </h2>
+
+                    </div>
+
+                    <span class="fast-badge">
+                        FAST
+                    </span>
+
+                </div>
+
+
+                <div class="train-route">
+
+                    <div>
+
+                        <strong>05:45</strong>
+
+                        <span>Dehradun</span>
+
+                    </div>
+
+
+                    <div class="duration">
+
+                        ───────●───────
+
+                        <small>
+                            08h 35m
+                        </small>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>14:20</strong>
+
+                        <span>Delhi</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="class-row">
+
+                    <div>
+                        <span>SL</span>
+                        <strong>₹520</strong>
+                        <em>AVAILABLE</em>
+                    </div>
+
+                    <div>
+                        <span>3A</span>
+                        <strong>₹1,250</strong>
+                        <em>AVAILABLE</em>
+                    </div>
+
+                    <div>
+                        <span>2A</span>
+                        <strong>₹1,850</strong>
+                        <em class="waiting">
+                            WL 03
+                        </em>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="book-btn"
+                    onclick="openPassenger()">
+
+                    SELECT TRAIN
+
+                </button>
+
+            </div>
+
+
+            <!-- TRAIN 2 -->
+
+            <div class="train-card">
+
+                <div class="train-top">
+
+                    <div>
+
+                        <span class="train-number">
+                            12687
+                        </span>
+
+                        <h2>
+                            Dehradun Shatabdi
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="train-route">
+
+                    <div>
+
+                        <strong>06:10</strong>
+
+                        <span>Dehradun</span>
+
+                    </div>
+
+
+                    <div class="duration">
+
+                        ───────●───────
+
+                        <small>
+                            05h 35m
+                        </small>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>11:45</strong>
+
+                        <span>Delhi</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="class-row">
+
+                    <div>
+                        <span>3A</span>
+                        <strong>₹1,480</strong>
+                        <em>AVAILABLE</em>
+                    </div>
+
+                    <div>
+                        <span>2A</span>
+                        <strong>₹2,150</strong>
+                        <em>AVAILABLE</em>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="book-btn"
+                    onclick="openPassenger()">
+
+                    SELECT TRAIN
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PASSENGER ================= -->
+
+<section id="passengerSection"
+         class="page-section hidden">
+
+    <div class="page-header">
+
+        <button onclick="showSearch()">
+            ← Back
+        </button>
+
+        <div>
+
+            <h1>Passenger Details</h1>
+
+            <p>
+                Enter details for your journey
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="progress">
+
+        <span class="completed">
+            ✓ Search
+        </span>
+
+        <span class="completed">
+            ✓ Train
+        </span>
+
+        <span class="active">
+            3 Passenger
+        </span>
+
+        <span>
+            4 Payment
+        </span>
+
+        <span>
+            5 Confirmation
+        </span>
+
+    </div>
+
+
+    <div class="passenger-layout">
+
+        <div class="passenger-main">
+
+            <div
+                id="passengerContainer">
+
+                <!-- Passenger form inserted here -->
+
+            </div>
+
+
+            <button
+                class="add-passenger"
+                onclick="addPassenger()">
+
+                + ADD ANOTHER PASSENGER
+
+            </button>
+
+        </div>
+
+
+        <aside class="summary-card">
+
+            <h3>Journey Summary</h3>
+
+            <div class="summary-route">
+
+                <strong>
+                    Dehradun → Delhi
+                </strong>
+
+                <span>
+                    28 Aug 2026
+                </span>
+
+            </div>
+
+            <hr>
+
+            <p>
+                Train
+                <strong>
+                    Dehradun Express
+                </strong>
+            </p>
+
+            <p>
+                Class
+                <strong>3A</strong>
+            </p>
+
+            <hr>
+
+            <div class="fare">
+
+                <span>Base Fare</span>
+                <strong>₹1,250</strong>
+
+            </div>
+
+            <div class="fare">
+
+                <span>Reservation</span>
+                <strong>₹20</strong>
+
+            </div>
+
+            <div class="fare">
+
+                <span>Convenience</span>
+                <strong>₹40</strong>
+
+            </div>
+
+            <div class="total">
+
+                <span>Total</span>
+                <strong>₹1,310</strong>
+
+            </div>
+
+            <button
+                class="continue-btn"
+                onclick="openPayment()">
+
+                CONTINUE
+
+            </button>
+
+        </aside>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PAYMENT ================= -->
+
+<section id="paymentSection"
+         class="page-section hidden">
+
+    <div class="page-header">
+
+        <button onclick="openPassenger()">
+            ← Back
+        </button>
+
+        <div>
+
+            <h1>Payment</h1>
+
+            <p>
+                Complete your booking
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="payment-layout">
+
+        <div class="payment-box">
+
+            <h2>Payment Method</h2>
+
+            <div class="payment-options">
+
+                <button class="payment-method active">
+                    <span>📱</span>
+                    UPI
+                </button>
+
+                <button class="payment-method">
+                    <span>💳</span>
+                    Card
+                </button>
+
+                <button class="payment-method">
+                    <span>🏦</span>
+                    Net Banking
+                </button>
+
+            </div>
+
+
+            <label class="field-label">
+                UPI ID
+            </label>
+
+            <input
+                class="normal-input"
+                type="text"
+                placeholder="example@upi"
+            >
+
+
+            <div class="secure-payment">
+
+                🔒 Your payment information is secure
+
+            </div>
+
+
+            <button
+                class="pay-btn"
+                onclick="confirmBooking()">
+
+                PAY ₹1,310
+
+            </button>
+
+        </div>
+
+
+        <aside class="summary-card">
+
+            <h3>Fare Summary</h3>
+
+            <div class="fare">
+
+                <span>Base Fare</span>
+                <strong>₹1,250</strong>
+
+            </div>
+
+            <div class="fare">
+
+                <span>Reservation Fee</span>
+                <strong>₹20</strong>
+
+            </div>
+
+            <div class="fare">
+
+                <span>Convenience Fee</span>
+                <strong>₹40</strong>
+
+            </div>
+
+            <div class="total">
+
+                <span>Total</span>
+                <strong>₹1,310</strong>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONFIRMATION ================= -->
+
+<section id="confirmationSection"
+         class="page-section hidden">
+
+    <div class="confirmation">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h1>
+            Booking Confirmed!
+        </h1>
+
+        <p>
+            Your railway ticket has been successfully booked.
+        </p>
+
+
+        <div class="pnr-box">
+
+            <span>PNR NUMBER</span>
+
+            <strong id="pnrNumber">
+                4567891234
+            </strong>
+
+        </div>
+
+
+        <div class="ticket">
+
+            <div class="ticket-header">
+
+                <div>
+
+                    <span>TRAIN</span>
+
+                    <h2>
+                        Dehradun Express
+                    </h2>
+
+                    <p>
+                        12055 • 3A
+                    </p>
+
+                </div>
+
+                <span class="confirmed">
+                    CONFIRMED
+                </span>
+
+            </div>
+
+
+            <div class="ticket-route">
+
+                <div>
+
+                    <strong>05:45</strong>
+
+                    <span>Dehradun</span>
+
+                </div>
+
+
+                <div class="ticket-line">
+                    ───────●───────
+                </div>
+
+
+                <div>
+
+                    <strong>14:20</strong>
+
+                    <span>Delhi</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="ticket-info">
+
+                <div>
+
+                    <span>Passenger</span>
+
+                    <strong id="confirmedName">
+                        Rahul Kumar
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>Age</span>
+
+                    <strong id="confirmedAge">
+                        21
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>Gender</span>
+
+                    <strong id="confirmedGender">
+                        Male
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>Coach</span>
+
+                    <strong>B2</strong>
+
+                </div>
+
+                <div>
+
+                    <span>Seat</span>
+
+                    <strong>34</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="confirmation-actions">
+
+            <button
+                class="outline-btn"
+                onclick="window.print()">
+
+                🖨 PRINT TICKET
+
+            </button>
+
+            <button
+                class="primary-btn"
+                onclick="newBooking()">
+
+                BOOK ANOTHER TICKET
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PNR ================= -->
+
+<section id="pnrSection"
+         class="page-section hidden">
+
+    <div class="center-box">
+
+        <button
+            class="back-link"
+            onclick="showHome()">
+
+            ← Back to Home
+
+        </button>
+
+        <h1>
+            Check PNR Status
+        </h1>
+
+        <p>
+            Enter your 10-digit PNR number
+        </p>
+
+        <input
+            id="pnrInput"
+            class="pnr-input"
+            maxlength="10"
+            placeholder="Enter PNR"
+        >
+
+        <button
+            class="primary-btn"
+            onclick="checkPNR()">
+
+            CHECK STATUS
+
+        </button>
+
+
+        <div
+            id="pnrResult"
+            class="pnr-result hidden">
+
+            <div class="success-small">
+                ✓
+            </div>
+
+            <h2>
+                CONFIRMED
+            </h2>
+
+            <strong>
+                PNR: 4567891234
+            </strong>
+
+            <p>
+                Dehradun → Delhi
+            </p>
+
+            <p>
+                Rahul Kumar • B2 / 34
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BOOKINGS ================= -->
+
+<section id="bookingsSection"
+         class="page-section hidden">
+
+    <div class="page-header">
+
+        <button onclick="showHome()">
+            ← Back
+        </button>
+
+        <div>
+
+            <h1>
+                My Bookings
+            </h1>
+
+            <p>
+                Your upcoming journeys
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="booking-history">
+
+        <div class="history-card">
+
+            <div>
+
+                <span class="status">
+                    CONFIRMED
+                </span>
+
+                <h2>
+                    Dehradun → Delhi
+                </h2>
+
+                <p>
+                    Dehradun Express • 28 August 2026
+                </p>
+
+                <p>
+                    PNR: 4567891234
+                </p>
+
+            </div>
+
+
+            <button
+                class="outline-btn"
+                onclick="showConfirmation()">
+
+                VIEW TICKET
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LOGIN ================= -->
+
+<section id="loginSection"
+         class="page-section hidden">
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <div class="login-logo">
+                🚆
+            </div>
+
+            <h1>
+                Welcome Back
+            </h1>
+
+            <p>
+                Login to manage your railway bookings
+            </p>
+
+
+            <label>
+                Mobile Number / Email
+            </label>
+
+            <input
+                class="normal-input"
+                type="text"
+                placeholder="Enter mobile or email"
+            >
+
+
+            <label>
+                Password
+            </label>
+
+            <input
+                class="normal-input"
+                type="password"
+                placeholder="Enter password"
+            >
+
+
+            <button
+                class="primary-btn full-btn"
+                onclick="showHome()">
+
+                LOGIN
+
+            </button>
+
+
+            <a href="#">
+                Forgot Password?
+            </a>
+
+            <p>
+                New user?
+                <strong>
+                    Create Account
+                </strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div>
+
+        <h3>RailConnect</h3>
+
+        <p>
+            A student UI/UX prototype inspired by
+            railway reservation systems.
+        </p>
+
+    </div>
+
+
+    <div>
+
+        <h4>Quick Links</h4>
+
+        <a onclick="showHome()">Home</a>
+
+        <a onclick="showPNR()">PNR Status</a>
+
+        <a onclick="showBookings()">My Bookings</a>
+
+    </div>
+
+
+    <div>
+
+        <h4>Support</h4>
+
+        <p>Help Center</p>
+        <p>Contact Us</p>
+        <p>Terms & Conditions</p>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
